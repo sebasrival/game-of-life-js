@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -48,9 +52,12 @@ h1 {
 }
 
 button {
-  color: black;
+  color: white;
+  width: fit-content;
+  height: 25px;
 }
 
 .active {
-  color: white;
+  color: black;
+  background: #fff;
 }
