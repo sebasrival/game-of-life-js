@@ -1,36 +1,53 @@
-import { SIZE } from "./config";
+import { WSIZE, HSIZE } from "./config";
 import { GameState } from "./models";
-import { initCells, toggleClickCell, loopGeneration } from "./lib";
+import { initBoard, toggleClickCell, drawCells } from "./lib";
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
 
 function main() {
-  const canvas = document.getElementById("canvas");
-  const ctx = canvas.getContext("2d");
-  const startBtn = document.getElementById("startBtn");
-  const pauseBtn = document.getElementById("pauseBtn");
-  const reset = document.getElementById("resetBtn");
+  var scale = 4;
 
-  canvas.width = SIZE;
-  canvas.height = SIZE;
+  console.log(scale);
+
+  canvas.width = WSIZE * scale;
+  canvas.height = HSIZE * scale;
+
+  canvas.style.width = `${WSIZE}px`;
+  canvas.style.height = `${HSIZE}px`;
+
+  ctx.scale(scale, scale);
 
   const game = new GameState();
 
-  let cells = initCells(ctx);
+  const cellsBoard = initBoard();
 
-  canvas.addEventListener("click", (e) => toggleClickCell(ctx, e, game, cells));
+  drawCells(ctx, cellsBoard);
+
+  canvas.addEventListener("click", (e) =>
+    toggleClickCell(ctx, e, game, cellsBoard),
+  );
 
   startBtn.addEventListener("click", () => {
-    game.setStart(true);
+    game.setState("start");
     startBtn.classList.add("active");
     pauseBtn.classList.remove("active");
   });
 
   pauseBtn.addEventListener("click", () => {
-    game.setStart(false);
+    game.setState("pause");
     pauseBtn.classList.add("active");
     startBtn.classList.remove("active");
   });
 
-  loopGeneration(ctx, cells, game);
+  resetBtn.addEventListener("click", () => {
+    game.setState("reset");
+    startBtn.classList.remove("active");
+    pauseBtn.classList.remove("active");
+  });
 }
 
 main();

@@ -1,4 +1,4 @@
-import { COLOR_LIVE, DEAD_COLOR, CELL_SIZE } from "./config";
+import { COLOR_LIVE, DEAD_COLOR, CELL_SIZE, BORDER_COLOR } from "./config";
 
 // models
 class Cell {
@@ -12,7 +12,7 @@ class Cell {
   draw(ctx) {
     ctx.fillStyle = this.isLive ? COLOR_LIVE : DEAD_COLOR;
     ctx.fillRect(this.x, this.y, this.size, this.size);
-    ctx.strokeStyle = this.isLive ? null : "grey";
+    ctx.strokeStyle = this.isLive ? null : BORDER_COLOR;
     ctx.strokeRect(this.x, this.y, this.size, this.size);
     return this;
   }
@@ -57,11 +57,12 @@ class CellBuilder {
 
 class GameState {
   constructor() {
-    this.start = false;
+    this.state = "idle"; // idle | start | pause | reset
     this.generation = 0;
+    this.population = 0;
   }
-  setStart(value) {
-    this.start = value;
+  setState(value) {
+    this.state = value;
   }
   setGeneration(value) {
     this.generation = value;
