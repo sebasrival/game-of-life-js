@@ -1,6 +1,6 @@
 import { WSIZE, HSIZE } from "./config";
 import { GameState } from "./models";
-import { initBoard, toggleClickCell, drawCells } from "./lib";
+import { initBoard, toggleClickCell, drawCells, loopGame } from "./lib";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -9,9 +9,7 @@ const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
 
 function main() {
-  var scale = 4;
-
-  console.log(scale);
+  let scale = 5;
 
   canvas.width = WSIZE * scale;
   canvas.height = HSIZE * scale;
@@ -48,6 +46,8 @@ function main() {
     startBtn.classList.remove("active");
     pauseBtn.classList.remove("active");
   });
+
+  loopGame(ctx, cellsBoard, game);
 }
 
 main();

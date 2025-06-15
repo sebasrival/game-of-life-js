@@ -64,6 +64,7 @@ class GameState {
   setState(value) {
     this.state = value;
   }
+
   setGeneration(value) {
     this.generation = value;
   }

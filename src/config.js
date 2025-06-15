@@ -1,7 +1,7 @@
-const WSIZE = 500;
-const HSIZE = 500;
+const WSIZE = 600;
+const HSIZE = 600;
 
-const CELL_SIZE = 12;
+const CELL_SIZE = 10;
 const ROWS = HSIZE / CELL_SIZE;
 const COLS = WSIZE / CELL_SIZE;
 
