@@ -24,9 +24,9 @@ function initBoard() {
   return board;
 }
 
-function drawCells(ctx, array = []) {
+function drawCells(ctx, array = [], gridVisible = true) {
   array.forEach((cells) => {
-    cells.forEach((cell) => cell.draw(ctx));
+    cells.forEach((cell) => cell.draw(ctx, gridVisible));
   });
 }
 
@@ -47,8 +47,8 @@ function loopGame(ctx, cellsBoard, game) {
     cellsBoard.length = 0;
     cellsBoard.push(...newArr);
     drawBackground(ctx);
-    drawCells(ctx, cellsBoard);
-    game.setState("");
+    drawCells(ctx, cellsBoard, game.grid);
+    game.setState("idle");
     window.requestAnimationFrame(() => loopGame(ctx, cellsBoard, game));
     return;
   }
@@ -86,7 +86,7 @@ function loopGame(ctx, cellsBoard, game) {
   cellsBoard.length = 0;
   cellsBoard.push(...cellsAux);
   drawBackground(ctx);
-  drawCells(ctx, cellsBoard);
+  drawCells(ctx, cellsBoard, game.grid);
 
   window.requestAnimationFrame(() => loopGame(ctx, cellsBoard, game));
 }

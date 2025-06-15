@@ -9,11 +9,13 @@ class Cell {
     this.isLive = isLive;
   }
 
-  draw(ctx) {
+  draw(ctx, gridVisible = true) {
     ctx.fillStyle = this.isLive ? COLOR_LIVE : DEAD_COLOR;
     ctx.fillRect(this.x, this.y, this.size, this.size);
-    ctx.strokeStyle = this.isLive ? null : BORDER_COLOR;
-    ctx.strokeRect(this.x, this.y, this.size, this.size);
+    if (gridVisible) {
+      ctx.strokeStyle = this.isLive ? null : BORDER_COLOR;
+      ctx.strokeRect(this.x, this.y, this.size, this.size);
+    }
     return this;
   }
 
@@ -60,6 +62,7 @@ class GameState {
     this.state = "idle"; // idle | start | pause | reset
     this.generation = 0;
     this.population = 0;
+    this.grid = true; // toggle grid visibility
   }
   setState(value) {
     this.state = value;
@@ -67,6 +70,10 @@ class GameState {
 
   setGeneration(value) {
     this.generation = value;
+  }
+
+  toggleGrid() {
+    this.grid = !this.grid;
   }
 }
 
