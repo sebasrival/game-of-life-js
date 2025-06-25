@@ -69,8 +69,19 @@ button {
   background: #fff;
 }
 
-canvas {
+.container_canvas {
+  display: flex;
+}
+
+#canvas {
+  z-index: 0;
+}
+
+#canvas_grid {
+  position: absolute;
   border: 0.1px solid rgba(240, 255, 255, 0.6);
+  z-index: 1;
+  pointer-events: none;
 }
 
 #toggleModeBtn {

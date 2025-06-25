@@ -50,9 +50,9 @@ function initBoard() {
   return board;
 }
 
-function drawCells(ctx, array = [], gridVisible = true) {
+function drawCells(ctx, array = []) {
   array.forEach((cells) => {
-    cells.forEach((cell) => cell.draw(ctx, gridVisible));
+    cells.forEach((cell) => cell.draw(ctx));
   });
 }
 

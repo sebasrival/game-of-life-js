@@ -6,10 +6,13 @@ import {
   drawCells,
   loopGame,
   drawBackground,
+  drawGrid,
 } from "./lib";
 
 const canvas = document.getElementById("canvas");
+const canvasGrid = document.getElementById("canvas_grid");
 const ctx = canvas.getContext("2d");
+const ctxGrid = canvasGrid.getContext("2d");
 const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
@@ -22,10 +25,17 @@ function main() {
   canvas.width = WSIZE * scale;
   canvas.height = HSIZE * scale;
 
+  canvasGrid.width = WSIZE * scale;
+  canvasGrid.height = HSIZE * scale;
+
   canvas.style.width = `${WSIZE}px`;
   canvas.style.height = `${HSIZE}px`;
 
+  canvasGrid.style.width = `${WSIZE}px`;
+  canvasGrid.style.height = `${HSIZE}px`;
+
   ctx.scale(scale, scale);
+  ctxGrid.scale(scale, scale);
 
   const game = new GameState();
 
@@ -33,6 +43,7 @@ function main() {
   const nextCellsBoard = initBoard();
 
   drawCells(ctx, cellsBoard);
+  drawGrid(ctxGrid);
 
   canvas.addEventListener("click", (e) =>
     toggleClickCell(ctx, e, game, cellsBoard),
@@ -62,20 +73,17 @@ function main() {
     nextCellsBoard.length = 0;
     nextCellsBoard.push(...initBoard());
     drawBackground(ctx);
-    drawCells(ctx, cellsBoard, game.grid);
+    drawCells(ctx, cellsBoard);
   });
 
   gridBtn.addEventListener("click", () => {
     game.toggleGrid();
     if (game.grid) {
       gridBtn.innerHTML = "&#x2317; Hide";
+      drawGrid(ctxGrid);
     } else {
       gridBtn.innerHTML = "&#x2317; Show";
-    }
-
-    if (game.state !== "start") {
-      drawBackground(ctx);
-      drawCells(ctx, cellsBoard, game.grid);
+      ctxGrid.clearRect(0, 0, WSIZE, HSIZE);
     }
   });
 
