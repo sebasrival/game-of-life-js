@@ -8,13 +8,18 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Custom properties */
+  --color-light: rgba(255, 255, 255, 0.87);
+  --color-dark: #242424;
+
+  --background-light: rgba(255, 255, 255, 0.87);
+  --background-dark: #242424;
 }
 
 a {
@@ -35,6 +40,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: light-dark(var(--color-dark), var(--color-light));
+  background-color: light-dark(var(--background-light), var(--background-dark));
 }
 
 h1 {
@@ -53,7 +60,6 @@ h1 {
 }
 
 button {
-  color: white;
   width: fit-content;
   height: 25px;
 }
@@ -67,3 +73,13 @@ canvas {
   border: 0.1px solid rgba(240, 255, 255, 0.6);
 }
 
+#toggleModeBtn {
+  width: auto;
+}
+
+.light {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}

@@ -1,9 +1,35 @@
-import { CELL_SIZE, COLS, ROWS, BG_COLOR, WSIZE, HSIZE } from "./config";
+import {
+  CELL_SIZE,
+  COLS,
+  ROWS,
+  BG_COLOR,
+  WSIZE,
+  HSIZE,
+  NEIGHBORS_POS,
+  BORDER_COLOR,
+} from "./config";
 import { CellBuilder } from "./models";
 
 function drawBackground(ctx, color = BG_COLOR) {
   ctx.fillStyle = color;
   ctx.fillRect(0, 0, WSIZE, HSIZE);
+}
+
+function drawGrid(ctx) {
+  ctx.beginPath();
+  ctx.strokeStyle = BORDER_COLOR;
+
+  for (let y = 0; y <= ROWS; y++) {
+    ctx.moveTo(0, y * CELL_SIZE);
+    ctx.lineTo(COLS * CELL_SIZE, y * CELL_SIZE);
+  }
+
+  for (let x = 0; x <= COLS; x++) {
+    ctx.moveTo(x * CELL_SIZE, 0);
+    ctx.lineTo(x * CELL_SIZE, ROWS * CELL_SIZE);
+  }
+
+  ctx.stroke();
 }
 
 function initBoard() {
@@ -41,54 +67,45 @@ const toggleClickCell = (ctx, event, game, cells) => {
   }
 };
 
-function loopGame(ctx, cellsBoard, game) {
-  if (game.state === "reset") {
-    const newArr = initBoard();
-    cellsBoard.length = 0;
-    cellsBoard.push(...newArr);
-    drawBackground(ctx);
-    drawCells(ctx, cellsBoard, game.grid);
-    game.setState("idle");
-    window.requestAnimationFrame(() => loopGame(ctx, cellsBoard, game));
-    return;
-  }
-
+function loopGame(ctx, cellsBoard, nextCellsBoard, game) {
   if (game.state !== "start") {
-    window.requestAnimationFrame(() => loopGame(ctx, cellsBoard, game));
     return;
   }
-
-  const cellsAux = initBoard();
 
   for (let x = 0; x < ROWS; x++) {
     for (let y = 0; y < COLS; y++) {
       let countLive = 0;
-      for (let vx = -1; vx <= 1; vx++) {
-        for (let vy = -1; vy <= 1; vy++) {
-          if (vx === 0 && vy === 0) continue;
-          let nx = x + vx;
-          let ny = y + vy;
-          if (nx < 0) nx = COLS - 1;
-          if (nx === COLS) nx = 0;
-          if (ny < 0) ny = ROWS - 1;
-          if (ny === ROWS) ny = 0;
-          if (cellsBoard[nx][ny].isLive) countLive++;
-        }
+      for (const [XP, YP] of NEIGHBORS_POS) {
+        let nx = x + XP;
+        let ny = y + YP;
+        if (nx < 0) nx = COLS - 1;
+        if (nx === COLS) nx = 0;
+        if (ny < 0) ny = ROWS - 1;
+        if (ny === ROWS) ny = 0;
+        if (cellsBoard[nx][ny].isLive) countLive++;
       }
       const cell = cellsBoard[x][y];
       let nextLive = cell.isLive;
       if (!cell.isLive && countLive === 3) nextLive = true;
       if (cell.isLive && (countLive > 3 || countLive <= 1)) nextLive = false;
-      cellsAux[x][y].setIsLive(nextLive);
+      nextCellsBoard[x][y].setIsLive(nextLive);
     }
   }
 
-  cellsBoard.length = 0;
-  cellsBoard.push(...cellsAux);
+  [cellsBoard, nextCellsBoard] = [nextCellsBoard, cellsBoard];
   drawBackground(ctx);
   drawCells(ctx, cellsBoard, game.grid);
 
-  window.requestAnimationFrame(() => loopGame(ctx, cellsBoard, game));
+  window.requestAnimationFrame(() =>
+    loopGame(ctx, cellsBoard, nextCellsBoard, game),
+  );
 }
 
-export { initBoard, drawBackground, drawCells, toggleClickCell, loopGame };
+export {
+  initBoard,
+  drawBackground,
+  drawCells,
+  toggleClickCell,
+  loopGame,
+  drawGrid,
+};
