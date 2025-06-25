@@ -9,13 +9,9 @@ class Cell {
     this.isLive = isLive;
   }
 
-  draw(ctx, gridVisible = true) {
+  draw(ctx) {
     ctx.fillStyle = this.isLive ? COLOR_LIVE : DEAD_COLOR;
     ctx.fillRect(this.x, this.y, this.size, this.size);
-    if (gridVisible) {
-      ctx.strokeStyle = this.isLive ? null : BORDER_COLOR;
-      ctx.strokeRect(this.x, this.y, this.size, this.size);
-    }
     return this;
   }
 
