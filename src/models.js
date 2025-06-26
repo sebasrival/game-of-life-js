@@ -1,4 +1,5 @@
-import { COLOR_LIVE, DEAD_COLOR, CELL_SIZE, BORDER_COLOR } from "./config";
+import { CELL_SIZE } from "./config";
+import { theme } from "./theme";
 
 // models
 class Cell {
@@ -10,7 +11,8 @@ class Cell {
   }
 
   draw(ctx) {
-    ctx.fillStyle = this.isLive ? COLOR_LIVE : DEAD_COLOR;
+    const colors = theme.getColors();
+    ctx.fillStyle = this.isLive ? colors.COLOR_LIVE : colors.DEAD_COLOR;
     ctx.fillRect(this.x, this.y, this.size, this.size);
     return this;
   }

@@ -1,23 +1,17 @@
-import {
-  CELL_SIZE,
-  COLS,
-  ROWS,
-  BG_COLOR,
-  WSIZE,
-  HSIZE,
-  NEIGHBORS_POS,
-  BORDER_COLOR,
-} from "./config";
+import { CELL_SIZE, COLS, ROWS, WSIZE, HSIZE, NEIGHBORS_POS } from "./config";
 import { CellBuilder } from "./models";
+import { theme } from "./theme";
 
-function drawBackground(ctx, color = BG_COLOR) {
-  ctx.fillStyle = color;
+function drawBackground(ctx) {
+  const colors = theme.getColors();
+  ctx.fillStyle = colors.BG_COLOR;
   ctx.fillRect(0, 0, WSIZE, HSIZE);
 }
 
 function drawGrid(ctx) {
+  const colors = theme.getColors();
   ctx.beginPath();
-  ctx.strokeStyle = BORDER_COLOR;
+  ctx.strokeStyle = colors.BORDER_COLOR;
 
   for (let y = 0; y <= ROWS; y++) {
     ctx.moveTo(0, y * CELL_SIZE);

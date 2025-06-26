@@ -1,5 +1,6 @@
 import { WSIZE, HSIZE } from "./config";
 import { GameState } from "./models";
+import { theme } from "./theme";
 import {
   initBoard,
   toggleClickCell,
@@ -88,7 +89,21 @@ function main() {
   });
 
   toggleMode.addEventListener("click", () => {
-    console.log("mode");
+    const body = document.body;
+    const isPause = game.state !== "start";
+    if (body.classList.contains("light")) {
+      body.classList.remove("light");
+      body.classList.add("dark");
+      theme.setDarkMode(true);
+    } else {
+      body.classList.remove("dark");
+      body.classList.add("light");
+      theme.setDarkMode(false);
+    }
+    if (isPause) {
+      drawBackground(ctx);
+      drawCells(ctx, cellsBoard);
+    }
   });
 }
 
