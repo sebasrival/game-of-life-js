@@ -91,3 +91,7 @@ button {
 .dark {
   color-scheme: dark;
 }
+
+.dark-mode {
+  color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));
+}

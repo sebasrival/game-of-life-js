@@ -1,9 +1,9 @@
-const WSIZE = 1000;
-const HSIZE = 1000;
+const WSIZE = 1280;
+const HSIZE = 720;
 
-const CELL_SIZE = 10;
-const ROWS = HSIZE / CELL_SIZE;
-const COLS = WSIZE / CELL_SIZE;
+const CELL_SIZE = 8;
+const ROWS = Math.floor(HSIZE / CELL_SIZE);
+const COLS = Math.floor(WSIZE / CELL_SIZE);
 
 const NEIGHBORS_POS = [
   [-1, -1],

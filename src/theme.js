@@ -16,7 +16,7 @@ class Theme {
       BG_COLOR: this.isDarkMode ? "#242424" : "#e4e4e4",
       COLOR_LIVE: this.isDarkMode ? "#e4e4e4" : "#222222",
       DEAD_COLOR: this.isDarkMode ? "#242424" : "#e4e4e4",
-      BORDER_COLOR: "grey",
+      BORDER_COLOR: "rgba(128,128,128,0.3)",
     };
   }
 }

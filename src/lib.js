@@ -53,11 +53,12 @@ function drawCells(ctx, array = []) {
 const toggleClickCell = (ctx, event, game, cells) => {
   if (game.state === "start") return;
   const rect = canvas.getBoundingClientRect();
-  const x = Math.floor((event.clientY - rect.top) / CELL_SIZE);
-  const y = Math.floor((event.clientX - rect.left) / CELL_SIZE);
+  const y = Math.floor((event.clientY - rect.top) / CELL_SIZE); // fila
+  const x = Math.floor((event.clientX - rect.left) / CELL_SIZE); // columna
+
   if (x >= 0 && x < COLS && y >= 0 && y < ROWS) {
-    cells[x][y].toggleLive().draw(ctx);
-    console.log(x, y);
+    cells[y][x].toggleLive().draw(ctx); // ✅ y = fila, x = columna
+    console.log("clicked cell:", y, x);
   }
 };
 
@@ -65,23 +66,29 @@ function loopGame(ctx, cellsBoard, nextCellsBoard, game) {
   if (game.state !== "start") {
     return;
   }
-  for (let x = 0; x < ROWS; x++) {
-    for (let y = 0; y < COLS; y++) {
+  for (let y = 0; y < ROWS; y++) {
+    for (let x = 0; x < COLS; x++) {
       let countLive = 0;
-      for (const [XP, YP] of NEIGHBORS_POS) {
-        let nx = x + XP;
-        let ny = y + YP;
+
+      for (const [X, Y] of NEIGHBORS_POS) {
+        let nx = x + X;
+        let ny = y + Y;
+
         if (nx < 0) nx = COLS - 1;
-        if (nx === COLS) nx = 0;
+        if (nx >= COLS) nx = 0;
         if (ny < 0) ny = ROWS - 1;
-        if (ny === ROWS) ny = 0;
-        if (cellsBoard[nx][ny].isLive) countLive++;
+        if (ny >= ROWS) ny = 0;
+
+        if (cellsBoard[ny][nx]?.isLive) countLive++;
       }
-      const cell = cellsBoard[x][y];
+
+      const cell = cellsBoard[y][x];
       let nextLive = cell.isLive;
+
       if (!cell.isLive && countLive === 3) nextLive = true;
       if (cell.isLive && (countLive > 3 || countLive <= 1)) nextLive = false;
-      nextCellsBoard[x][y].setIsLive(nextLive);
+
+      nextCellsBoard[y][x].setIsLive(nextLive);
     }
   }
 
