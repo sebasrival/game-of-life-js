@@ -15,10 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Custom properties */
-  --color-light: rgba(255, 255, 255, 0.87);
+  --color-light: #e4e4e4;
   --color-dark: #242424;
 
-  --background-light: rgba(255, 255, 255, 0.87);
+  --background-light: #e4e4e4;
   --background-dark: #242424;
 }
 
@@ -64,11 +64,6 @@ button {
   height: 25px;
 }
 
-.active {
-  color: black;
-  background: #fff;
-}
-
 .container_canvas {
   display: flex;
 }
@@ -79,9 +74,10 @@ button {
 
 #canvas_grid {
   position: absolute;
-  border: 0.1px solid rgba(240, 255, 255, 0.6);
+
   z-index: 1;
   pointer-events: none;
+  background-color: transparent;
 }
 
 #toggleModeBtn {

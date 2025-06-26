@@ -65,7 +65,6 @@ function loopGame(ctx, cellsBoard, nextCellsBoard, game) {
   if (game.state !== "start") {
     return;
   }
-
   for (let x = 0; x < ROWS; x++) {
     for (let y = 0; y < COLS; y++) {
       let countLive = 0;

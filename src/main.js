@@ -90,7 +90,9 @@ function main() {
 
   toggleMode.addEventListener("click", () => {
     const body = document.body;
-    const isPause = game.state !== "start";
+    // const isPause = game.state !== "start";
+    // console.log(theme.isDarkMode);
+
     if (body.classList.contains("light")) {
       body.classList.remove("light");
       body.classList.add("dark");
@@ -100,10 +102,13 @@ function main() {
       body.classList.add("light");
       theme.setDarkMode(false);
     }
-    if (isPause) {
-      drawBackground(ctx);
-      drawCells(ctx, cellsBoard);
-    }
+    drawBackground(ctx);
+    drawCells(ctx, cellsBoard);
+    // if (isPause) {
+    //   drawBackground(ctx);
+    //   drawCells(ctx, cellsBoard);
+    // }
+    // console.log(theme.isDarkMode);
   });
 }
 
