@@ -40,7 +40,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: light-dark(var(--color-dark), var(--color-light));
+  color: (var(--color-dark), var(--color-light));
   background-color: light-dark(var(--background-light), var(--background-dark));
 }
 
@@ -62,6 +62,12 @@ h1 {
 button {
   width: fit-content;
   height: 25px;
+  border: none;
+  background-color: light-dark(#f5f5f5, #424242);
+}
+
+button:active {
+  background-color: light-dark(#c0c0c0, #252525);
 }
 
 .container_canvas {
@@ -90,6 +96,10 @@ button {
 
 .dark {
   color-scheme: dark;
+}
+
+.active {
+  background-color: light-dark(#cfcfcf, #808080);
 }
 
 .dark-mode {
