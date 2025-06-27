@@ -41,10 +41,10 @@ El proyecto implementa patrones de diseño modernos:
 - **POO**: Clases encapsuladas para células y estado del juego.
 
 ## Tecnologías
-- JavaScript ES6+ con módulos.
-- HTML5 Canvas para renderizado.
-- CSS.
-- Vite para desarrollo y build.
-- GitHub Actions para CI/CD con GithubPages.
+- <img src="https://raw.githubusercontent.com/github/explore/main/topics/javascript/javascript.png" width="20"/> JavaScript ES6+ con módulos
+- <img src="https://raw.githubusercontent.com/github/explore/main/topics/html/html.png" width="20"/> HTML5 Canvas para renderizado
+- <img src="https://raw.githubusercontent.com/github/explore/main/topics/css/css.png" width="20"/> CSS
+- <img src="https://vitejs.dev/logo.svg" width="20"/> Vite para desarrollo y build
+- <img src="https://avatars.githubusercontent.com/u/44036562?s=200&v=4" width="20"/> GitHub Actions para CI/CD con GitHubPages
 
 Wiki Game of Life: https://es.wikipedia.org/wiki/Juego_de_la_vida
