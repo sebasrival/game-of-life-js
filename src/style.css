@@ -37,7 +37,7 @@ body {
   flex-direction: column;
   margin: 0;
   min-width: 320px;
-  min-height: 100dvh;
+  min-height: 100vh;
   color: (var(--color-dark), var(--color-light));
   background-color: light-dark(var(--background-light), var(--background-dark));
 }
@@ -120,7 +120,7 @@ button:active {
   position: absolute;
   top: 10px;
   left: 10px;
-  z-index: 3;
+  z-index: 1;
   text-align: start;
   padding: 20px;
   margin: 2px;
@@ -133,6 +133,7 @@ button:active {
 
 .title_game {
   margin: 0;
+  padding: 0;
   text-align: center;
   color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));
 }
@@ -159,8 +160,4 @@ footer {
       }
     }
   }
-}
-
-header {
-  padding-top: 5px;
 }
