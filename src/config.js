@@ -1,5 +1,5 @@
-const WSIZE = 1280;
-const HSIZE = 720;
+const WSIZE = window.innerWidth;
+const HSIZE = window.innerHeight - 150;
 
 const CELL_SIZE = 8;
 const ROWS = Math.floor(HSIZE / CELL_SIZE);

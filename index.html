@@ -8,8 +8,15 @@
     <title>Game of Life</title>
   </head>
   <body>
+    <head>
+      <h1 class="title_game">Game of Life!</h1>
+    </head>
     <main>
       <div class="container_canvas">
+        <div class="statistics">
+          <span id="generation">Generación: 0</span>
+          <span id="population">Población: 0</span>
+        </div>
         <canvas id="canvas_grid"></canvas>
         <canvas id="canvas"></canvas>
       </div>
@@ -22,6 +29,17 @@
         <button id="toggleModeBtn" type="button" class="dark-mode">💡︎</button>
       </div>
     </main>
+    <footer>
+      <ul>
+        <li>
+          Developed by
+          <a href="https://github.com/sebasrival" target="_blank"
+            >@sebasrival</a
+          >
+        </li>
+        <li>© 2025</li>
+      </ul>
+    </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

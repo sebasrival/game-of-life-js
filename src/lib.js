@@ -57,7 +57,14 @@ const toggleClickCell = (ctx, event, game, cells) => {
   const x = Math.floor((event.clientX - rect.left) / CELL_SIZE); // columna
 
   if (x >= 0 && x < COLS && y >= 0 && y < ROWS) {
-    cells[y][x].toggleLive().draw(ctx); // ✅ y = fila, x = columna
+    cells[y][x].toggleLive().draw(ctx);
+    if (cells[y][x].isLive) {
+      game.addPopulation();
+      console.log("clicked cell:", y, x);
+    } else {
+      game.subtractPopulation();
+      console.log("clicked cell:", y, x);
+    }
     console.log("clicked cell:", y, x);
   }
 };
@@ -89,15 +96,19 @@ function loopGame(ctx, cellsBoard, nextCellsBoard, game) {
       if (cell.isLive && (countLive > 3 || countLive <= 1)) nextLive = false;
 
       nextCellsBoard[y][x].setIsLive(nextLive);
+      if (!cellsBoard[y][x].isLive && nextLive) game.addPopulation();
+      if (cellsBoard[y][x].isLive && !nextLive) game.subtractPopulation();
     }
   }
 
   [cellsBoard, nextCellsBoard] = [nextCellsBoard, cellsBoard];
   drawBackground(ctx);
   drawCells(ctx, cellsBoard, game.grid);
-
+  game.addGeneration();
   window.requestAnimationFrame(() =>
-    loopGame(ctx, cellsBoard, nextCellsBoard, game),
+    setTimeout(() => {
+      loopGame(ctx, cellsBoard, nextCellsBoard, game);
+    }, 30),
   );
 }
 

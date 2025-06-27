@@ -64,14 +64,45 @@ class GameState {
   }
   setState(value) {
     this.state = value;
+    if ("idle" === value) {
+      this.resetGeneration();
+      this.resetPopulation();
+      this.updateInfoView();
+    }
   }
 
-  setGeneration(value) {
-    this.generation = value;
+  resetGeneration() {
+    this.generation = 0;
+  }
+
+  addGeneration() {
+    this.generation += 1;
+    this.updateInfoView();
+  }
+
+  addPopulation() {
+    this.population += 1;
+    this.updateInfoView();
+  }
+
+  subtractPopulation() {
+    this.population -= 1;
+    this.updateInfoView();
+  }
+
+  resetPopulation() {
+    this.population = 0;
   }
 
   toggleGrid() {
     this.grid = !this.grid;
+  }
+
+  updateInfoView() {
+    const generation = document.getElementById("generation");
+    const population = document.getElementById("population");
+    generation.textContent = `Generación: ${this.generation}`;
+    population.textContent = `Población: ${this.population}`;
   }
 }
 
