@@ -43,8 +43,8 @@ El proyecto implementa patrones de diseño modernos:
 ## Tecnologías
 - JavaScript ES6+ con módulos.
 - HTML5 Canvas para renderizado.
-- CSS3 con propiedades personalizadas.
+- CSS.
 - Vite para desarrollo y build.
-- GitHub Actions para CI/CD.
+- GitHub Actions para CI/CD con GithubPages.
 
 Wiki Game of Life: https://es.wikipedia.org/wiki/Juego_de_la_vida
