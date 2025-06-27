@@ -26,7 +26,7 @@ El [Juego de la Vida ](https://es.wikipedia.org/wiki/Juego_de_la_vida)es un aut√
 Puedes ejecutar el proyecto localmente. Existe un archivo `index.html`, simplemente √°brelo en tu navegador. Si quieres puedes usar Node.js, ejecuta:
 
 ```bash
-npm start
+npm run dev
 ```
 
 ## Dependencias
