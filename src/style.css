@@ -33,6 +33,8 @@ a:hover {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
@@ -41,6 +43,7 @@ body {
 }
 
 main {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,7 +140,7 @@ button:active {
 
 footer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));
 
   & ul {
