@@ -133,7 +133,7 @@ button:active {
 
 .title_game {
   margin: 0;
-  padding: 0;
+  padding-top: 10px;
   text-align: center;
   color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));
 }
