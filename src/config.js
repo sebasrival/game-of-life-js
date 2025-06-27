@@ -1,5 +1,12 @@
+const getViewportHeight = () => {
+  if (window.visualViewport) {
+    return window.visualViewport.height - 150;
+  }
+  return window.innerHeight - 150;
+};
+
 const WSIZE = window.innerWidth;
-const HSIZE = window.innerHeight - 150;
+const HSIZE = getViewportHeight();
 
 const CELL_SIZE = 8;
 const ROWS = Math.floor(HSIZE / CELL_SIZE);
