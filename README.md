@@ -1,44 +1,50 @@
-# Game of Life JS
-
-Este proyecto es una implementación en JavaScript del famoso autómata celular "Game of Life" de John Conway.
+# Game of Life JS - by @sebasrival
 
 ## Descripción
+Implementación interactiva del autómata celular "Juego de la Vida" de John Conway en JavaScript moderno. Es un juego de cero jugadores donde la evolución está determinada por el estado inicial y las reglas de Conway.
 
-El [Juego de la Vida ](https://es.wikipedia.org/wiki/Juego_de_la_vida)es un autómata celular ideado por el matemático británico John Horton Conway en 1970. Es un juego de cero jugadores, lo que significa que su evolución está determinada por su estado inicial, sin requerir más entradas.
+## Características Principales
+- **Simulación en tiempo real** con controles interactivos (Start/Pause/Reset).
+- **Sistema de temas** con modo oscuro y claro.
+- **Visualización dual canvas** para separar células y grilla.
+- **Estadísticas en vivo** mostrando generación y población.
+- **Diseño responsivo** que se adapta al tamaño de ventana.
 
-## Instalación
-
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/game-of-life-js.git
-   ```
-2. Ingresa al directorio del proyecto:
-   ```bash
-   cd game-of-life-js
-   ```
-3. Instala las dependencias (si corresponde):
-   ```bash
-   npm install
-   ```
-
-## Uso
-
-Puedes ejecutar el proyecto localmente. Existe un archivo `index.html`, simplemente ábrelo en tu navegador. Si quieres puedes usar Node.js, ejecuta:
-
+## Instalación y Uso
 ```bash
+# Clonar repositorio
+git clone https://github.com/sebasrival/game-of-life-js.git
+cd game-of-life-js
+
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
 npm run dev
 ```
 
-## Dependencias
+Alternativamente, abre `index.html` directamente en el navegador.
 
-Revisa el archivo `package.json` para ver las dependencias utilizadas. Solo depedencias de desarrollo.
+## Arquitectura del Código
+El proyecto implementa patrones de diseño modernos:
 
-## Buenas prácticas o aplicando patrones de diseño
+### Módulos Principales
+- **`src/main.js`**: Orquestador principal y manejo de eventos.
+- **`src/lib.js`**: Motor del juego con lógica de Conway.
+- **`src/models.js`**: Clases Cell, GameState y CellBuilder.
+- **`src/config.js`**: Configuración de grilla y dimensiones.
+- **`src/theme.js`**: Gestión de colores y temas.
 
-- **Patrón Builder:** Se implementó el patrón de diseño Builder para facilitar la creación y configuración flexible de tableros o configuraciones iniciales del juego, permitiendo construir objetos complejos paso a paso.
-- **Separación de responsabilidades:** El código está organizado en módulos/clases separando la lógica del juego, la visualización y la gestión de estado.
-- **Programación orientada a objetos:** Se emplean clases para las celdas y para controlar el estado del juego.
+### Patrones Implementados
+- **Patrón Builder**: Para construcción flexible de células.
+- **Separación de responsabilidades**: Módulos especializados por funcionalidad.
+- **POO**: Clases encapsuladas para células y estado del juego.
 
-## Licencia
+## Tecnologías
+- JavaScript ES6+ con módulos.
+- HTML5 Canvas para renderizado.
+- CSS3 con propiedades personalizadas.
+- Vite para desarrollo y build.
+- GitHub Actions para CI/CD.
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+Wiki Game of Life: https://es.wikipedia.org/wiki/Juego_de_la_vida
