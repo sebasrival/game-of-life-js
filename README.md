@@ -4,7 +4,7 @@ Este proyecto es una implementación en JavaScript del famoso autómata celular 
 
 ## Descripción
 
-El Juego de la Vida es un autómata celular ideado por el matemático británico John Horton Conway en 1970. Es un juego de cero jugadores, lo que significa que su evolución está determinada por su estado inicial, sin requerir más entradas.
+El [Juego de la Vida ](https://es.wikipedia.org/wiki/Juego_de_la_vida)es un autómata celular ideado por el matemático británico John Horton Conway en 1970. Es un juego de cero jugadores, lo que significa que su evolución está determinada por su estado inicial, sin requerir más entradas.
 
 ## Instalación
 
