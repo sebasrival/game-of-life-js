@@ -88,17 +88,17 @@ function main() {
     game.toggleGrid();
     if (game.grid) {
       gridBtn.innerHTML = `
-      <span style="font-size: 1.5em; position: relative; top: -0.125em"
+      <span style="font-size: 15px; position: relative; top: -1px"
             >&#x2317;</span
           >
-          <span style="position: relative; top: -0.188em">Hide</span>`;
+          <span style="position: relative; top: -1px">Hide</span>`;
       drawGrid(ctxGrid);
     } else {
       gridBtn.innerHTML = `
-      <span style="font-size: 1.5em; position: relative; top: -0.125em"
+      <span style="font-size: 15px; position: relative; top: -1px"
             >&#x2317;</span
           >
-          <span style="position: relative; top: -0.188em">Show</span>`;
+          <span style="position: relative; top: -1px">Show</span>`;
       ctxGrid.clearRect(0, 0, WSIZE, HSIZE);
     }
   });
